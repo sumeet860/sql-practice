@@ -80,3 +80,10 @@ and month(birth_date) in (02, 05, 12)
 and city in ('Kingston')
 
 8. Show the percent of patients that have 'M' as their gender. Round the answer to the nearest hundreth number and in percent form.
+with count_ as
+(select count(*) male_count from patients
+where gender = 'M'),
+total_ as
+(select count(*) total_count from patients)
+select concat(round(male_count * 100.0 /total_count,2),'%') from 
+count_,total_;
